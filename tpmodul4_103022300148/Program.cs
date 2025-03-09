@@ -1,28 +1,28 @@
-﻿public class KodePos()
-{
-    public void GetKodePos(String input)
-    {
-        String[] kelurahan = { "Batununggal", "Kujangsari", "Mengger", "Wates",
-            "Cijaura", "Jatisari", "Margasari", "Sekejati", "Kebonwaru", "Maleer", "Samoja" };
-        int[] kode = { 40266, 40287, 40267, 40256, 40287, 40286, 40286, 40286, 40272, 40274, 40273 };
+﻿using tpmodul4_103022300148;
 
-        for (int i = 0; i < kelurahan.Length; i++)
+public class Program() {
+    public static void Main() {
+        DoorMachine door = new DoorMachine();
+        while(door.GetState() != State.Masuk)
         {
-            if (kelurahan[i] == input)
+            Console.Write("Masukkan Perintah : ");
+            String input = Console.ReadLine();
+            
+            if(input == "Terbuka")
             {
-                Console.WriteLine("Kode Pos : " + kode[i]);
+                door.Terbuka();
+            }else if(input == "Terkunci")
+            {
+                door.Terkunci();
+            }else if(input == "Masuk")
+            {
+                door.Masuk();
+            }
+            else
+            {
+                Console.WriteLine("Pintu Tetap Terkunci !");
+                break;
             }
         }
-    }
-}
-
-public class Program()
-{
-    public static void Main()
-    {
-        KodePos pos = new KodePos();
-        Console.Write("Masukkan Kode Pos : ");
-        String input = Console.ReadLine();
-        pos.GetKodePos(input);
     }
 }
